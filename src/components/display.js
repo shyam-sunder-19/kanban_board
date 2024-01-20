@@ -44,7 +44,7 @@ const Display = ({ displayData }) => {
                         <Heading headingName={groupName} count={groups[groupName].length} groupedby={'status'}/>
                         <div>
                             {groups[groupName].map((member) => (
-                            <Card id={member.id} title={member.title} tag={member.tag} groupedby={'status'}/>
+                            <Card id={member.id} title={member.title} tag={member.tag} groupedby={'status'} online={getUser(member.userId).available}/>
                             ))}
                         </div>
                     </div>
@@ -66,7 +66,7 @@ const Display = ({ displayData }) => {
                         <Heading headingName={getPriority(groupName)} count={groups[groupName].length} groupedby={'priority'}/>
                         <div>
                             {groups[groupName].map((member) => (
-                            <Card id={member.id} title={member.title} tag={member.tag} groupedby={'priority'}/>
+                            <Card id={member.id} title={member.title} tag={member.tag} groupedby={'priority'} online={getUser(member.userId).available}/>
                             ))}
                         </div>
                     </div>

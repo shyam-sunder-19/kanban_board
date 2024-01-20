@@ -15,6 +15,31 @@ const Heading = (props) => {
     } else {
         priority = true
     }
+
+    const returnStatusIcon = (pri) => {
+        if (pri === "Done") {
+            return (
+                <MdDone />
+            )
+        } else if (pri === "In Progress") {
+            return (
+                <MdPieChart />
+            )
+        } else if (pri === "Todo") {
+            return (
+                <MdRadioButtonUnchecked />
+            )
+        } else if (pri === "Canceled") {
+            return (
+                <MdClear />
+            )
+        } else {
+            return (
+                <div></div>
+            )
+        }
+    }
+
     return (
         <div className="heading">
             <div className="leftHeading">
@@ -22,7 +47,10 @@ const Heading = (props) => {
                     user?
                        <UserIcon online={props.online} />
                             :
-                        <div></div>
+                        status?
+                            returnStatusIcon(props.headingName)
+                            :
+                            <div></div>
                 }
                 <div className="headingName">{props.headingName}</div>
                 <div>{props.count}</div>
